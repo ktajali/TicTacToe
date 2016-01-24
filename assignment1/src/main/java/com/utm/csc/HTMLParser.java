@@ -11,16 +11,13 @@ import org.jsoup.select.Elements;
 public class HTMLParser {
 
 	public static void main(String[] args) throws IOException {
-		//getting the url from user
-		Scanner scanner = new Scanner(System.in);
-		
+	
 		//getting results of all urls through while loop
-		while(scanner.hasNext()){
+		for(String url : args){
 			
-			String url = scanner.next();
 			//creating a Jsoup doc object to process url
 			Document doc = Jsoup.connect(url).get();
-		
+		    System.out.println("##########################");
 			System.out.println("title : " + doc.title());
 			
 			Elements links = doc.select("a[href]");
