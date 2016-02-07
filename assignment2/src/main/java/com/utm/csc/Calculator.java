@@ -1,67 +1,50 @@
 package com.utm.csc;
 
-import javax.swing.JOptionPane;
 
 public class Calculator {
-        public static void main(String[] args) {
-
-        String input1, input2, input3;
-        double num1, num2, answer;
-
-        answer = 0;
-        input1 = JOptionPane.showInputDialog(null, "Enter the first " +
-                "number: ", "Input 1", JOptionPane.QUESTION_MESSAGE);
-        num1 = Double.parseDouble(input1);
-        input2 = JOptionPane.showInputDialog(null, "Enter the second " +
-                "number: ", "Input 2", JOptionPane.QUESTION_MESSAGE);
-        num2 = Double.parseDouble(input2);
-        input3 = JOptionPane.showInputDialog(null, "Enter the operator" +
-                "(+, -, /, *, %, ^, `, cosd, sind, tand, sinr, cosr, tanr): ", "Sign",
-                JOptionPane.QUESTION_MESSAGE);
-
-        if (input3.equals("+"))
+		//constructor
+		public Calculator()
+		{
+	
+		}
+		//addition
+        public double addition(double num1 , double num2)
         {
-            answer = num1 + num2;
-            JOptionPane.showMessageDialog(null, "The answer is : " + answer,
-                    "Addition", JOptionPane.INFORMATION_MESSAGE);
+            double answer = num1 + num2;
+            return answer;
         }
-
-        if (input3.equals("-"))
+        //subtraction
+        public double subtraction(double num1 , double num2)
         {
-            answer = num1 - num2;
-            JOptionPane.showMessageDialog(null, "The answer is : " + answer,
-                    "Subtraction", JOptionPane.INFORMATION_MESSAGE);
+            double answer = num1 - num2;
+            return answer;
         }
-
-        if (input3.equals("/"))
+        //division
+        public double division(double num1 , double num2)
         {
-            answer = num1 / num2;
-            JOptionPane.showMessageDialog(null, "The answer is : " + answer,
-                    "Division", JOptionPane.INFORMATION_MESSAGE);
+            double answer = num1 / num2;
+            return answer;
         }
-
-        if (input3.equals("*"))
+        //multiplication
+        public double multiplication(double num1 , double num2)
         {
-            answer = num1 * num2;
-            JOptionPane.showMessageDialog(null, "The answer is : " + answer,
-                    "Multiplication", JOptionPane.INFORMATION_MESSAGE);
+            double answer = num1 * num2;
+            return answer;
         }
-
-        if (input3.equals("%"))
+        //function calculates the modular
+        public double modular(double num1 , double num2)
         {
-            answer = num1 % num2;
-            JOptionPane.showMessageDialog(null, "The answer is : " + answer,
-                    "Modular", JOptionPane.INFORMATION_MESSAGE);
+            double answer = num1 % num2;
+            return answer;
         }
-
-        if (input3.equals("^"))
+        //exponent function
+        public double exponent(double num1 , double num2)
         {
-            answer = Math.pow(num1, num2);
-            JOptionPane.showMessageDialog(null, "The answer is : " + answer,
-                    "Exponent", JOptionPane.INFORMATION_MESSAGE);
+            double answer = Math.pow(num1, num2);
+            return answer;
         }
-
-        if (input3.equals("`"))
+        //calculating the tetration
+        public double tetration(double num1 , double num2)
         {
             double x = num1;
             while (num2 != 1)
@@ -69,52 +52,36 @@ public class Calculator {
                 x = Math.pow(num1, x);
                 num2--;
             }
-            answer = x;
-            JOptionPane.showMessageDialog(null, "The answer is : " + answer,
-                    "Tetration", JOptionPane.INFORMATION_MESSAGE);
+            double answer = x;
+            return answer;
         }
-
-        if (input3.equals("sind"))
+        //sin function, degree will be true if user wants sind
+        public double sin(double num1 , double num2, boolean degree)
         {
-            answer = num1 * Math.sin((Math.PI/180)*num2);
-            JOptionPane.showMessageDialog(null, "The answer is : " + answer,
-                    "Sine in Degrees", JOptionPane.INFORMATION_MESSAGE);
+        	double deg = 1;
+        	if(degree)
+        		deg = Math.PI/180;
+            double answer = num1 * Math.sin(deg*num2);
+            return answer;
         }
-
-        if (input3.equals("cosd"))
+        //cos function, degree is tru if user wants cosd
+        public double cos(double num1 , double num2 , boolean degree)
         {
-            answer = num1 * Math.cos((Math.PI/180)*num2);
-            JOptionPane.showMessageDialog(null, "The answer is : " + answer,
-                    "Cosine in Degrees", JOptionPane.INFORMATION_MESSAGE);
+        	double deg = 1;
+        	if(degree)
+        		deg = Math.PI/180;        	
+            double answer = num1 * Math.cos(deg*num2);
+            return answer;
         }
-
-        if (input3.equals("tand"))
+        //the tangant function, gets degree as true if user wnats tand
+        public double tan(double num1 , double num2 , boolean degree)
         {
-            answer = num1 * Math.tan((Math.PI/180)*num2);
-            JOptionPane.showMessageDialog(null, "The answer is : " + answer,
-                    "Tangent in Degrees", JOptionPane.INFORMATION_MESSAGE);
+        	double deg = 1;
+        	if(degree)
+        		deg = Math.PI/180;         	
+            double answer = num1 * Math.tan(deg*num2);
+            return answer;
         }
+ 
 
-        if (input3.equals("sinr"))
-        {
-            answer = num1 * Math.sin(num2);
-            JOptionPane.showMessageDialog(null, "The answer is : " + answer,
-                    "Sine in Radians", JOptionPane.INFORMATION_MESSAGE);
-        }
-
-        if (input3.equals("cosr"))
-        {
-            answer = num1 * Math.cos(num2);
-            JOptionPane.showMessageDialog(null, "The answer is : " + answer,
-                    "Cosine in Radians", JOptionPane.INFORMATION_MESSAGE);
-        }
-
-        if (input3.equals("tanr"))
-        {
-            answer = num1 * Math.tan(num2);
-            JOptionPane.showMessageDialog(null, "The answer is : " + answer,
-                    "Tangent in Radians", JOptionPane.INFORMATION_MESSAGE);
-        }
-        System.exit(0);
-    }
 }
