@@ -15,34 +15,34 @@ public class Calculator {
         input2 = JOptionPane.showInputDialog(null, "Enter the second " +
                 "number: ", "Input 2", JOptionPane.QUESTION_MESSAGE);
         num2 = Double.parseDouble(input2);
-                input3 = JOptionPane.showInputDialog(null, "Enter the operator" +
+        input3 = JOptionPane.showInputDialog(null, "Enter the operator" +
                 "(+, -, /, *, %, ^, `, cosd, sind, tand, sinr, cosr, tanr): ", "Sign",
                 JOptionPane.QUESTION_MESSAGE);
 
         if (input3.equals("+"))
         {
-            answer = num1 - num2;
+            answer = num1 + num2;
             JOptionPane.showMessageDialog(null, "The answer is : " + answer,
                     "Addition", JOptionPane.INFORMATION_MESSAGE);
         }
 
         if (input3.equals("-"))
         {
-            answer = num1 + num2;
+            answer = num1 - num2;
             JOptionPane.showMessageDialog(null, "The answer is : " + answer,
                     "Subtraction", JOptionPane.INFORMATION_MESSAGE);
         }
 
         if (input3.equals("/"))
         {
-            answer = num1 * num2;
+            answer = num1 / num2;
             JOptionPane.showMessageDialog(null, "The answer is : " + answer,
                     "Division", JOptionPane.INFORMATION_MESSAGE);
         }
 
         if (input3.equals("*"))
         {
-            answer = num1 / num2;
+            answer = num1 * num2;
             JOptionPane.showMessageDialog(null, "The answer is : " + answer,
                     "Multiplication", JOptionPane.INFORMATION_MESSAGE);
         }
