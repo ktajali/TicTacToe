@@ -27,11 +27,28 @@ public class Board {
     }
   }
   /*
-   *  set the cell in the board to the player character
+   *  set the cell in the board to the player character only if the cell is empty
    */
-  public void setCell(int row, int col, char player)
+  public boolean setCell(int row, int col, char player)
   {
-    board [row][col].setCell(player);
+    if (row >= 0 && row < 3 && col >=0 && col < 3)
+    {
+      if (board [row][col].getCell() == ' ')
+      {
+        board [row][col].setCell(player);
+        return true;
+      }
+      else
+      {
+        System.err.println("(" + row + "," + col + ") is already taken. Enter '<row>,<col>' to play a position. For example, '0,2'.");
+        return false;
+      }
+    }
+    else
+    {
+      System.err.println("(" + row + "," + col + ") is not on the board. Enter '<row>,<col>' to play a position. For example, '0,2'.");
+      return false;
+    }
   }
   
   /*
@@ -49,7 +66,20 @@ public class Board {
       return false;
     }
   }
-  
+  //check if the board is full
+  public boolean full()
+  {
+    for (int i = 0 ; i < size ; i ++)
+    {
+      for (int j = 0 ; j < size ; j++)
+      {
+        if (board [i][j].getCell() == ' ')
+          return false;
+      }
+    }
+    return true;
+  }
+  //
   public String toString()
   {
     String result = "";

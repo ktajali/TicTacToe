@@ -13,33 +13,52 @@ public class App
       //initializing the game board-set the cells to empty char
       board.init();
       //put main player as O 
-      char mainPlayer = 'O';
+      char mainPlayer = 'X';
       int row = 0;
       int col = 0;
-      
+      //if the player played his round successfully, change becomes true to change the player
+      boolean change = false;
       System.out.println("Enter '<row>,<col>' to play a position. For example, '0,2'.");
-      
-      while (!board.won(row , col, mainPlayer)){
-        //switch the player every time
-        if (mainPlayer == 'X')
-          mainPlayer = 'O';
-        else
-          mainPlayer = 'X';
+      //x and y holding the row and col temporarily
+      int x = 0 , y = 0;
+
+      while (!board.won(row , col, mainPlayer) && !board.full()){
+        //switch the player every time if the last player inserted successfully
+        if (change){
+          mainPlayer = (mainPlayer == 'X') ? 'O' : 'X';
+        }
       
         System.out.print("Player " + mainPlayer + " [row,col]: ");
-        //get the string user inputs
-        String [] line = scan.nextLine().split(",");
-        row = Integer.parseInt(line[0]);
-        col = Integer.parseInt(line[1]);
+        //get the string user inputs-handles if user enter a wrong format
+        try{
+          String [] line = scan.nextLine().split(",");
+          x = Integer.parseInt(line[0]);
+          y = Integer.parseInt(line[1]);
+          change = board.setCell(x,y, mainPlayer);
+        }catch (Exception ex)
+        {
+          change = false;
+          System.err.println("Wrong input format! Enter '<row>,<col>' to play a position. For example, '0,2'.");
+        }
         //set the cell in the game board
-        board.setCell(row,col, mainPlayer);
+        
+        if(change)
+        {
+          row = x;
+          col = y;
+          //printing the game board
+          System.out.println(board);
+        }
+        else
+          System.out.println("");
 
-        //printing the game board
-        System.out.println(board);
+
         
       }
-
-      System.out.println("Player " + mainPlayer + " won");
+      if(board.won(row , col, mainPlayer))
+        System.out.println("Player " + mainPlayer + " won");
+      else
+        System.out.println("Nobody won the game :(");
       
     }
 
