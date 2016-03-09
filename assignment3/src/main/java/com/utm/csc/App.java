@@ -39,7 +39,7 @@ public class App
         
       }
 
-      System.out.println("won");
+      System.out.println("Player " + mainPlayer + " won");
       
     }
 

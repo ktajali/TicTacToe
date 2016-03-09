@@ -3,14 +3,14 @@ package com.utm.csc;
 public class Board {
   
   private final int size = 3;
-  private char [][] board;
+  private Cell [][] board;
   
 /*
  *  constructor
  */
   public Board()
   {
-    board = new char [size][size];
+    board = new Cell [size][size];
   }
  /*
   *  initializing the instance variable board
@@ -22,7 +22,7 @@ public class Board {
     {
       for (int j = 0 ; j < size ; j++)
       {
-        board [i][j] = ' ';
+        board [i][j] = new Cell(' ', i, j);
       }
     }
   }
@@ -31,7 +31,7 @@ public class Board {
    */
   public void setCell(int row, int col, char player)
   {
-    board [row][col]= player;
+    board [row][col].setCell(player);
   }
   
   /*
@@ -39,10 +39,10 @@ public class Board {
    */
   public boolean won(int row, int col, char ch)
   {
-    if (board[row][0] == ch && board[row][1] == ch && board[row][2] == ch ||
-        board[0][col] == ch && board[1][col] == ch && board[2][col] == ch ||
-        board[0][0] == ch && board[1][1] == ch && board[2][2] == ch ||
-        board[0][2] == ch && board[1][1] == ch && board[2][0] == ch)
+    if (board[row][0].getCell() == ch && board[row][1].getCell() == ch && board[row][2].getCell() == ch ||
+        board[0][col].getCell() == ch && board[1][col].getCell() == ch && board[2][col].getCell() == ch ||
+        board[0][0].getCell() == ch && board[1][1].getCell() == ch && board[2][2].getCell() == ch ||
+        board[0][2].getCell() == ch && board[1][1].getCell() == ch && board[2][0].getCell() == ch)
       return true;
     else
     {
