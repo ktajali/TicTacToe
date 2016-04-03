@@ -44,6 +44,9 @@ public class GamePanel extends JPanel{
     toolPanel = tp;
   }
   
+  public JButton[][] getGameButtons(){
+    return gameButtons;
+  }
   //reset the buttons in the game panel and tool panel nad game state
   public void reset(){
     game = new TicTacToe('X');
