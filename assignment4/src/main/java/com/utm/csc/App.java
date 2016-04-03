@@ -1,13 +1,28 @@
 package com.utm.csc;
 
-/**
- * Hello world!
- *
- */
+import java.util.Scanner;
+
 public class App 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Welcome to Assignment3" );
+      if (args.length > 0){
+        if (args[0].equalsIgnoreCase("-gui")){
+          AppGUI.run();
+        }
+        else if(args[0].equalsIgnoreCase("-console")){
+          AppConsole.run(); 
+        }
+        else{
+          System.out.println("please use valid argument to run the application!");
+          System.out.println("-gui or -console");
+        }
+      }
+      else{
+        AppConsole.run();
+      }
+      
+      
     }
+
 }
