@@ -39,6 +39,14 @@ public class ToolPanel extends JPanel{
     label.setText(str);
   }
   
+  public JButton  getQuitButton(){
+    return quit;
+  }
+  
+  public JButton  getResetButton(){
+    return reset;
+  }
+  
   //handles events when reset or quit buttons are being called
   private class ToolListener implements ActionListener{
     
